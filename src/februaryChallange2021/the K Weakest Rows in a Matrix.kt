@@ -1,5 +1,9 @@
 package februaryChallange2021
 
+import java.util.*
+import kotlin.Comparator
+import kotlin.math.roundToLong
+
 class Solution16 {
     fun kWeakestRows(mat: Array<IntArray>, k: Int): IntArray {
         val ar = arrayListOf<Pair<Int, Int>>()
@@ -23,4 +27,65 @@ class Solution16 {
         }
         return result
     }
+}
+var mn:Long = 999999999
+fun main() {
+    var t = Integer.valueOf(readLine())
+    var cont = 1
+    while (t-- > 0) {
+        mn = 999999999
+        var n = Integer.valueOf(readLine())
+        val v = java.util.Vector<Pair<Long, Long>>()
+        while (n-- > 0) {
+            val ar = readLine()?.split(" ")
+            v.addElement(Pair(ar!![0].toLong(), ar[1].toLong()))
+        }
+        v.sortWith(object : Comparator<Pair<Long, Long>> {
+            override fun compare(o1: Pair<Long, Long>, o2: Pair<Long, Long>): Int {
+                return o1.second.compareTo(o2.second)
+            }
+        })
+        val y :Long = v.elementAt(v.size/2).second
+
+
+        var resultY: Long = 0
+
+        v.forEach {
+            resultY +=  Math.abs(it.second - y)
+
+        }
+        v.sortWith(object : Comparator<Pair<Long, Long>> {
+            override fun compare(o1: Pair<Long, Long>, o2: Pair<Long, Long>): Int {
+                return o1.first.compareTo(o2.first)
+            }
+        })
+        var l:Long = -2000000000L
+        var r :Long = 2000000000L
+        var mid:Long= 0
+        while(l<=r){
+            mid = (((l+r)/2).toLong())
+            if(dist(mid+1,v) - dist(mid,v)>=0){
+                r  = (mid-1)
+
+            }else{
+                l = (mid+1)
+            }
+        }
+
+        print("Case #${cont++}: ")
+        println(mn+resultY)
+
+    }
+
+}
+
+fun dist(i: Long, v: java.util.Vector<Pair<Long, Long>>): Long {
+    var resultX :Long = 0
+    var j:Long =0
+    v.forEach {
+        resultX +=  Math.abs(-it.first + i+j)
+        j++
+    }
+    mn = Math.min(resultX,mn)
+    return resultX
 }
