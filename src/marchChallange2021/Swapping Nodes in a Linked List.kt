@@ -25,8 +25,6 @@ class Solution12 {
             node1 = node1.next
             j++
         }
-
-
-        return head
+       return head
     }
 }
