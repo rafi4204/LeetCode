@@ -1,7 +1,5 @@
 package marchChallange2021
 
-import com.sun.xml.internal.fastinfoset.util.StringArray
-
 class Solution17 {
     fun spellchecker(wordlist: Array<String>, queries: Array<String>): Array<String> {
         val map = hashMapOf<String, String>()
