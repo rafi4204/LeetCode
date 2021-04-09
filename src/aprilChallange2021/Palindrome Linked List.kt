@@ -13,39 +13,20 @@ import marchChallange2021.ListNode
  */
 class Solution {
     fun isPalindrome(node: ListNode?): Boolean {
-        var s = ""
         var head = node
-        s = head?.`val`.toString()
+        val ar = arrayListOf<Char>()
+        ar.add(head?.`val`!!.toChar())
         while (head?.next != null) {
             head = head.next
-            s += head?.`val`.toString()
-        }
+            ar.add(head?.`val`!!.toChar())
 
-        return findPalindrome(s)
+        }
+        return ar.toArray().joinToString("") == ar.toArray().joinToString("").reversed()
+
 
     }
 
 
-    fun findPalindrome(s: String): Boolean {
-        var i = 0
-        var j = 0
-        if (s.length % 2 == 0) {
-            i = s.length / 2 - 1
-            j = i + 1
-        } else {
-            i = s.length / 2
-            j = i
-        }
-
-        while (i in s.indices && j in s.indices) {
-            if (s[i] == s[j]) {
-                i--
-                j++
-            } else
-                break
-        }
-        return i == -1 && j == s.length
-    }
 }
 
 fun main() {
