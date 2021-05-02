@@ -12,4 +12,5 @@ fun invoke(lamda : (ArrayList<String>) -> Unit){
 
 fun main(){
     invoke (printList)
+
 }
