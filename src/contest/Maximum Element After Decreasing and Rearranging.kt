@@ -18,6 +18,7 @@ class Solution11 {
                 max = prv
 
         }
+
         return max.toInt()
 
     }

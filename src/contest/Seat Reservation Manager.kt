@@ -24,6 +24,8 @@ class SeatManager(n: Int) {
         queue.add(seatNumber)
 
 
+
+
     }
 
 }
