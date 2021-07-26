@@ -11,29 +11,49 @@ fun main() {
 
     while (tt > 0) {
         tt--
-        val kk = scan.nextLine().split(" ")
-        val ss = scan.nextLine().split(" ")
-        var s = arrayListOf<Int>()
-        var k = arrayListOf<Int>()
-        ss.forEach {
-            s.add(it.toInt())
-        }
-        kk.forEach {
-            k.add(it.toInt())
-        }
-        val map = hashMapOf<Int, Int>()
-        var c = 0
-        s.forEach {
-            if (map[it] == null || map[it]!! < k[1]) {
-                if (map[it] == null)
-                    map[it] = 1
-                else
-                    map[it] = map[it]!! + 1
-                c++
+        val n = scan.nextLine().toInt()
+        val mat = Array(n) { IntArray(5) { 0 } }
+
+        for (i in 0 until n) {
+            var s = scan.nextLine().split(" ")
+            for (j in 0..4) {
+                mat[i][j] = s[j].toInt()
             }
         }
-        println(c / k[1])
 
+        var list = ArrayList<Pair<Int, Int>>()
+        var mn = Int.MAX_VALUE
+        var indx = -1
+
+
+        for (j in 0 until 5) {
+            mn = Int.MAX_VALUE
+            indx = -1
+
+            for (i in 0 until n) {
+                if (mat[i][j] < mn) {
+                    mn = mat[i][j]
+                    indx = i
+                }
+            }
+            list.add(Pair(mn, indx))
+
+
+        }
+        val map = hashMapOf<Int, Int>()
+        list.forEach {
+            if (map[it.second] != null)
+               map[it.second] = map[it.second]!! + 1
+            else
+                map[it.second] = 1
+        }
+
+        map.toSortedMap()
+
+        if (map.values.first() >= 3)
+            println(map.keys.first())
+        else
+            println(-1)
 
     }
 }
