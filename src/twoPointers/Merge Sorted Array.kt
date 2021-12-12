@@ -22,4 +22,16 @@ class Solution8 {
 
         }
     }
+
+    fun F(i: Int): Int {
+        var i = i
+        return if (i < 2) {
+            i + F(++i) + F(++i)
+        } else i
+    }
+}
+
+fun main(){
+    val sol = Solution8()
+    print(sol.F(0))
 }
