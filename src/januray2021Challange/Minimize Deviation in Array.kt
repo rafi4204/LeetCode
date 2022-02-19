@@ -16,11 +16,11 @@ class Solution7 {
         md = treeSet.last()-treeSet.first()
 
         while(treeSet.size>0 && treeSet.last()%2==0){
-            md= md.coerceAtMost(treeSet.last() - treeSet.first())
+
             val last = treeSet.last()
             treeSet.remove(last)
             treeSet.add(last/2)
-
+            md= md.coerceAtMost(treeSet.last() - treeSet.first())
         }
         return md
     }
