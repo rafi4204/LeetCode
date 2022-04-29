@@ -1,22 +1,25 @@
 package algorithm;
 
-class MinSizeSubArraySum {
-    public static int findMinSubArray(int S, int[] arr) {
-        int sum = 0;
-        int s = 0;
-        int e = 0;
-        int min = Integer.MAX_VALUE;
-        while(s<=e && s<arr.length && e<arr.length){
-            while(sum<S) {
-                sum += arr[e++];
-            }
-            min = Math.min(min,e-s+1);
-            while(sum>=S){
-                sum-=arr[s++];
-            }
+import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
 
-
+class MaxFruitCountOf2Types {
+    public static int findLength(char[] arr) {
+        int i = 0;
+        int mx = Integer.MIN_VALUE;
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (int j = 0; j < arr.length; j++) {
+            map.put(arr[j], map.getOrDefault(arr[j], 0) + 1);
+            while (map.size() > 2) {
+                map.put(arr[i], map.get(arr[i]) - 1);
+                if (map.get(arr[i]) == 0) {
+                    map.remove(arr[i]);
+                }
+                i++;
+            }
+            mx = Math.max(mx, j - i + 1);
         }
-        return min;
+        return mx;
     }
 }
