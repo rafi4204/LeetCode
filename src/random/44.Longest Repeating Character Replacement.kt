@@ -13,6 +13,9 @@ class Solution44 {
             while (j - i + 1 - mxF > k) {
                 map[s[i]] = map[s[i]]!! - 1
                 i++
+                map.values.forEach {
+                    mxF = mxF.coerceAtLeast(it)
+                }
             }
             mxL = mxL.coerceAtLeast(j - i + 1)
         }
