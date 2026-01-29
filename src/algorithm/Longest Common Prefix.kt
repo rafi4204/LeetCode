@@ -20,9 +20,11 @@ class Solution2 {
 
 
 class Testa {
+    val a_a = 0
 
 }
 
 class TestB{
 
 }
+
