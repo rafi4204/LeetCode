@@ -22,3 +22,7 @@ class Solution2 {
 class Testa {
 
 }
+
+class TestB{
+
+}
