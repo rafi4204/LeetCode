@@ -17,3 +17,8 @@ class Solution2 {
 
     }
 }
+
+
+class Testa {
+
+}
